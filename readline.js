@@ -18,31 +18,35 @@ let userdata={
 
 //pertanyaan 1
 
-rl.question ("siapa nama kamu?", (answer)=> {
-    userdata.name= `nama kamu adalah ${answer}`;
+rl.question ("siapa nama kamu?", (nama)=> {
+    userdata.name= `nama kamu adalah ${nama}`;
 
     
 //pertanyaan 2
 
-rl.question ("nomor telp?",(answer1)=>{
+rl.question ("nomor telp?",(mobile)=>{
     
-    userdata.phone=`nomor telp kamu adalah ${answer1}`;
+    userdata.phone=`nomor telp kamu adalah ${mobile}`;
 
 // pertanyaan 3
 
-rl.question ("email?",(answer2)=>{
-    userdata.email=`email kamu adalah ${answer2}`;
+rl.question ("email?",(email)=>{
+    userdata.email=`email kamu adalah ${email}`;
     
    // validator 
-   if (validator.isEmail(answer2)) {
-    userdata.email = `Email kamu adalah ${answer2}`;
+   if (validator.isEmail(email)) {
+    userdata.email = `Email kamu adalah ${email}`;
 
     // Menyimpan data ke file
-    const content = `${userdata.name}\n${userdata.phone}\n${userdata.email}\nData berhasil disimpan`; // tambah data berhasil disimpan kalau mau di print
-    
-    fs.writeFileSync(`test3.txt`, content);
-    console.log("Data berhasil disimpan.");
 
+    // const content = `${userdata.name}\n${userdata.phone}\n${userdata.email}\nData berhasil disimpan`; // tambah data berhasil disimpan kalau mau di print
+    data={nama,mobile,email};
+
+    const file= fs.readFileSync("data/contacts.json","utf-8");
+    const contacts = JSON.parse(file);
+    contacts.push(data);
+    fs.writeFileSync("data/contacts.json", JSON.stringify(contacts))
+    console.log("Data berhasil disimpan.");
 } else {
     console.log("Format email yang anda masukkan salah.");
 }
@@ -51,6 +55,13 @@ rl.question ("email?",(answer2)=>{
     //const content=`${userdata.name}\n${userdata.phone}\n${userdata.email}\n`;
     //hapus userdata email kalau gamau terbawa
     
+    //membuat object yang berisi data yang diinput user
+    // const result = { userdata.name ,userdataphone ,userdataemail };
+    
+    const file= fs.readFileSync("data/contacts.json","utf-8");
+    const contacts = JSON.parse(file);
+    contacts.push(content);
+
     rl.close();
     
     
