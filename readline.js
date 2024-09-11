@@ -38,7 +38,6 @@ rl.question ("email?",(email)=>{
     userdata.email = `Email kamu adalah ${email}`;
 
     // Menyimpan data ke file
-
     // const content = `${userdata.name}\n${userdata.phone}\n${userdata.email}\nData berhasil disimpan`; // tambah data berhasil disimpan kalau mau di print
     data={nama,mobile,email};
 
