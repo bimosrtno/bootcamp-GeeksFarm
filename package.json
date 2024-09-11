@@ -1,0 +1,16 @@
+{
+  "name": "bootcamp-hari-ke-2",
+  "version": "1.0.0",
+  "description": "learn NPM",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "fol": "ls",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bimo",
+  "license": "ISC",
+  "dependencies": {
+    "validator": "^13.12.0"
+  }
+}
