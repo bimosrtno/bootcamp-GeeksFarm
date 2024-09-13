@@ -37,11 +37,11 @@ yargs.parse();
 function readFileAndCombineData (newData){
     try {
     // baca isi file
-        const file= fs.readFileSync(`data/contacts.json`,"utf-8"); //langusng kasi alamat file
+        const file= fs.readFileSync(`data/contacts.json`,"utf-8"); //langusng kasi alamat file jangan filepath
         const contacts = JSON.parse(file);
         //menambahkan data baru
         contacts.push(newData);
-        fs.writeFileSync(`data/contacts.json`, JSON.stringify(contacts,null,2)); // langsung kasih alamat file
+        fs.writeFileSync(`data/contacts.json`, JSON.stringify(contacts,null,2)); // langsung kasih alamat file jangan filepath
     
     } catch (err) {
         console.error("error reading or writing:", err);
