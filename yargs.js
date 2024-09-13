@@ -1,7 +1,7 @@
 const yargs = require("yargs");
 const fs = require("fs");
 const validator = require("validator");
-
+//
 
 yargs.command({
     command: 'add',
@@ -88,17 +88,17 @@ function readFileAndCombineData(newData) {
     
     try {
         // Membaca file
-        const file = fs.readFileSync('data/contacts.json', "utf-8");
+        const file = fs.readFileSync('data/contacts.json', "utf-8"); // langsung ke folder
         const contacts = JSON.parse(file);
 
         // Menambahkan data 
         contacts.push(newData);
 
         // Menulis file
-        fs.writeFileSync('data/contacts.json', JSON.stringify(contacts, null, 2));
+        fs.writeFileSync('data/contacts.json', JSON.stringify(contacts, null, 2)); // langsung ke folder
 
-        console.log("Contact saved successfully.");
+        console.log("berhasil di simpan");
     } catch (err) {
-        console.error("Error reading or writing file:", err);
+        console.error("coba", err);
     }
 }
