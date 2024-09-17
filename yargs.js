@@ -1,104 +1,120 @@
-const yargs = require("yargs");
-const fs = require("fs");
-const validator = require("validator");
-//
+const yargs = require('yargs');
+const { processContacts, addContact, deleteContact, updateContact } = require('./func-yargs.js');
 
+//  menambahkan contact
 yargs.command({
-    command: 'add',
-    describe: 'Add new contact',
-    builder: {
-        name: {
-            describe: 'Contact Name',
-            demandOption: true,          
-            type: 'string',              
-        },
-        email: {
-            describe: 'Contact Email',
-            demandOption: false,         
-            type: 'string',              
-        },
-        mobile: {
-            describe: 'Contact Mobile Phone Number',
-            demandOption: true,          
-            type: 'string',              
-        },
+  command: 'add',
+  describe: 'Add new contact',
+  builder: {
+    name: {
+      describe: 'Contact Name',
+      demandOption: true,
+      type: 'string'
     },
-    handler(argv) {
-        
-        const contact = {
-            name: argv.name,
-            email: argv.email,
-            mobile: argv.mobile,
-        };
-
-        // Validasi dan penyimpanan data
-        if (validateContact(contact)) {
-            readFileAndCombineData(contact);
-        }
+    email: {
+      describe: 'Contact Email',
+      demandOption: false,
+      type: 'string'
+    },
+    mobile: {
+      describe: 'Contact Mobile Phone Number',
+      demandOption: true,
+      type: 'string'
     }
-});
+  },
+  handler(argv) {
+    const contact = {
+      name: argv.name,
+      email: argv.email,
+      mobile: argv.mobile
+    };
+    addContact(contact);
+  }
+})
 
+//  menampilkan semua contact
+.command({
+  command: 'list',
+  describe: 'List all contacts',
+  handler() {
+    processContacts();
+  }
+})
 
-yargs.parse();
-
-// Fungsi untuk validasi kontak
-function validateContact(contact) {
-    // Validasi nama 
-    if (isNameDuplicate(contact.name)) {
-        console.log("namanya sudah ada");
-        return false;
+// menampilkan detail contact berdasarkan nama
+.command({
+  command: 'detail',
+  describe: 'Get contact details by name',
+  builder: {
+    name: {
+      describe: 'Contact Name',
+      demandOption: true,
+      type: 'string'
     }
+  },
+  handler(argv) {
+    processContacts(argv.name);
+  }
+})
 
-    // Validasi email 
-    if (contact.email && !validator.isEmail(contact.email)) {
-        console.log("emailnya salah");
-        return false;
+// menghapus contact berdasarkan nama
+.command({
+  command: 'delete',
+  describe: 'Delete contact by name',
+  builder: {
+    name: {
+      describe: 'Contact Name',
+      demandOption: true,
+      type: 'string'
     }
+  },
+  handler(argv) {
+    deleteContact(argv.name);
+  }
+})
 
-    // Validasi nomor telepon 
-    if (!validator.isMobilePhone(contact.mobile, 'id-ID')) {
-        console.log("nomernya salah.");
-        return false;
+// memperbarui contact berdasarkan nama
+.command({
+  command: 'update',
+  describe: 'Update contact by name',
+  builder: {
+    name: {
+      describe: 'Current Contact Name',
+      demandOption: true,
+      type: 'string'
+    },
+    newname: {
+      describe: 'New Contact Name',
+      demandOption: true,
+      type: 'string'
+    },
+    email: {
+      describe: 'New Contact Email',
+      demandOption: false,
+      type: 'string'
+    },
+    mobile: {
+      describe: 'New Contact Mobile Phone Number',
+      demandOption: false,
+      type: 'string'
     }
+  },
+  handler(argv) {
+    const updatedData = {
+      name: argv.newname,
+      email: argv.email,
+      mobile: argv.mobile
+    };
+  
+    updateContact(argv.name, updatedData);
+  }
+})
 
-    // Jika semua validasi lolos
-    return true;
-}
+.parse();
 
-// Fungsi memeriksa duplikasi file
-function isNameDuplicate(name) {
-    try {
-        const file = fs.readFileSync('data/contacts.json', "utf-8");
-        const contacts = JSON.parse(file);
-
-        // Memeriksa duplikasi
-        return contacts.some(contact => contact.name === name);
-    } catch (err) {
-        console.error("Error reading file:", err);
-        return false;
-    }
-}
-
-// Fungsi membaca menambahkan data baru
-function readFileAndCombineData(newData) {
-    if (!validateContact(newData)) {
-        
-        return;
-    }
-    
-    try {
-        // Membaca file
-        const file = fs.readFileSync('data/contacts.json', "utf-8"); // langsung ke folder
-        const contacts = JSON.parse(file);
-
-        // Menambahkan data 
-        contacts.push(newData);
-
-        // Menulis file
-        fs.writeFileSync('data/contacts.json', JSON.stringify(contacts, null, 2)); // langsung ke folder
-
-        console.log("berhasil di simpan");
-    } catch (err) {
-        console.error("coba", err);
-    }
-}
+// comand cli
+// list = menampilkan semua contact
+// add = menambah concatact
+// delete = menghapus contact
+// detail = menampilkan detail contact
+// update = memperbarui contact
