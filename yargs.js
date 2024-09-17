@@ -113,8 +113,8 @@ yargs.command({
 .parse();
 
 // comand cli
-// list = menampilkan semua contact
-// add = menambah concatact
-// delete = menghapus contact
-// detail = menampilkan detail contact
-// update = memperbarui contact
+// list = menampilkan semua contact / node yargs.js list
+// add = menambah contact / node yargs.js add --name="" --email="" --mobile=""
+// delete = menghapus contact / node yargs.js delete --name=""
+// detail = menampilkan detail contact / node yargs.js detail --name=""
+// update = memperbarui contact /node yargs.js update --name="" --newname="" --email="" --mobile=""
