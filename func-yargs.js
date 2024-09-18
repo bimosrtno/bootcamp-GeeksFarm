@@ -2,7 +2,7 @@ const fs = require('fs');
 const validator = require('validator');
 
 // membaca file JSON 
-const processContacts = (nama) => {
+const processContacts = (name) => {
   fs.readFile('data/contacts.json', 'utf8', (err, data) => {
     if (err) {
       console.error('Error reading file:', err);
@@ -12,8 +12,8 @@ const processContacts = (nama) => {
     try {
       const contacts = JSON.parse(data);
 
-      if (nama) {
-        const result = contacts.find(contact => contact.nama === nama);
+      if (name) {
+        const result = contacts.find(contact => contact.name === name);
         if (result) {
           console.log('Data ditemukan');
           console.log(`Name: ${result.nama}`);
@@ -24,7 +24,7 @@ const processContacts = (nama) => {
         }
       } else {
         contacts.forEach(contact => {
-          console.log('Name:', contact.nama);
+          console.log('Name:', contact.name);
           console.log('Email:', contact.email);
           console.log('Phone:', contact.mobile);
           console.log('---');
@@ -54,7 +54,7 @@ const addContact = (contact) => {
 };
 
 //menghapus Contact berdasarkan nama
-const deleteContact = (nama) => {
+const deleteContact = (name) => {
   fs.readFile('data/contacts.json', 'utf8', (err, data) => {
     if (err) {
       console.error('Error reading file:', err);
@@ -128,7 +128,7 @@ const updateContact = (oldName, updatedData) => {
 
 // Fungsi untuk validasi kontak
 const validateContact = (contact) => {
-  if (isNameDuplicate(contact.nama)) {
+  if (isNameDuplicate(contact.name)) {
     console.log('Nama sudah ada');
     return false;
   }
@@ -151,7 +151,7 @@ const isNameDuplicate = (name) => {
   try {
     const file = fs.readFileSync('data/contacts.json', 'utf-8');
     const contacts = JSON.parse(file);
-    return contacts.some(contact => contact.nama === name);
+    return contacts.some(contact => contact.name === name);
   } catch (err) {
     console.error('Error reading file:', err);
     return false;
