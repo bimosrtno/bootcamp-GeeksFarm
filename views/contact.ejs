@@ -1,17 +1,28 @@
 <%- include('layout/header') %>
 <%- include('layout/nav') %>
-    <h2>halo ini contact ya</h2>
+
+<% if (message) { %>
+    <h1><strong><%= message %></strong></h1>
+<% }  %>
+
+
+<% if (contacts.length > 0) { %>
+    <h1>daftar contact</h1>
+    <br>
     <table>
-      <tr>
-        <th>Nama</th>
-        <th>Email</th>
-      </tr>
-      <% contacts.forEach(contact => { %>
-      <tr>
-        <td><%= contact.name %></td>
-        <td><%= contact.email %></td>
-      </tr>
-      <% }) %>
+        <tr>
+            <th>Nama</th>
+            <th>Email</th>
+        </tr>
+        <% contacts.forEach(contact => { %>
+        <tr>
+            <td><%= contact.name %></td>
+            <td><%= contact.email %></td>
+        </tr>
+        <% }) %>
     </table>
-   
-    <%- include('layout/footer') %>
+<% } else { %>
+    <p>Tidak ada kontak yang tersedia.</p>
+<% } %>
+
+<%- include('layout/footer') %>

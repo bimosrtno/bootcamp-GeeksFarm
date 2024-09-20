@@ -22,22 +22,29 @@ app.get("/about",(req,res)=>{
     res.render("about",{title: "about page"});
 });
 
-app.get("/contact",(req,res)=>{
-    //res.sendFile("./contact.html",{root:__dirname});
-    
- // baca file contacts.json
- fs.readFile('./data/contacts.json', 'utf8', (err, data) => {
-    if (err) {
-        return res.status(500).send('kesalahan saat membaca file kontak');
-    }
-    
-    // Mengurai data JSON
-    const contacts = JSON.parse(data);
-    
-    // Render 
-    res.render('contact', { contacts, title: "contact page" });
-  });
+app.get("/contact", (req, res) => {
+    // Baca file contacts.json
+    fs.readFile('./data/contacts.json', 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).send('Kesalahan saat membaca file');
+        }
+        
+        // Mengurai data JSON
+        let contacts;
+        try {
+            contacts = JSON.parse(data);
+        } catch (parseError) {
+            return res.status(500).send('Kesalahan saat mengurai file');
+        }
+
+        // Render dengan pesan jika kosong
+        // Ternary operator adalah carauntuk mengekspresikan pernyataan if-else
+        const message = contacts.length === 0 ? 'Data kosong' : null;
+        
+        res.render('contact', { contacts, title: "Contact Page", message });
+    });
 });
+
 
 
 app.get("/product/:prodID/category/:catID",(req,res)=>{
