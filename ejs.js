@@ -2,12 +2,20 @@ const express = require("express");
 // func baca json
 const fs = require('fs');
 const app= express();
+//ejs layout
+const ejsLayout= require ("express-ejs-layouts"); 
+
 //const path = require("path");
 const port= 3000;
 
 // view engine ejs
 app.set("view engine", "ejs");
 
+// folder untuk view
+
+app.set('views', __dirname + '/views');
+app.use(ejsLayout);
+app.set('layout', 'layout/layouts');
 
 //get, send, render 
 app.get(`/`,(req,res)=>{
