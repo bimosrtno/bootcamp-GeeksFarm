@@ -12,6 +12,7 @@ app.set("views", __dirname + "/views");
 app.use(ejsLayout);
 app.set("layout", "layout/layouts");
 
+
 // Menyajikan file statis (gambar)
 app.use(express.static("image"));
 

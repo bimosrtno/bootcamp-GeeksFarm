@@ -41,8 +41,8 @@
     "mobile": "081232112121"
   },
   {
-    "name": "jek",
-    "email": "jekejeko@g.com",
+    "name": "jack",
+    "email": "jackejeko@g.com",
     "mobile": "081321881321"
   },
   {
@@ -74,5 +74,10 @@
     "name": "papan",
     "email": "papantuliz@g.com",
     "mobile": "089112111111"
+  },
+  {
+    "name": "asus",
+    "email": "laptopasus@g.com",
+    "mobile": "086541233"
   }
 ]

@@ -1,13 +1,47 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <style>
+        /* Styling untuk navbar */
+        nav {
+            background-color: black; /* Warna latar belakang navbar */
+            padding: 10px 20px; /* Jarak di dalam navbar */
+            position: fixed; /* Membuat navbar tetap di atas saat scroll */
+            top: 0; /* Menempatkan navbar di bagian atas */
+            left: 0; /* Menempatkan navbar di sisi kiri */
+            right: 0; /* Menempatkan navbar di sisi kanan */
+            z-index: 1000; /* Menempatkan navbar di atas konten lainnya */
+        }
+        nav a {
+            color: white; /* Warna teks link */
+            text-decoration: none; /* Menghilangkan garis bawah pada link */
+            margin: 0 15px; /* Jarak antar link */
+            font-weight: bold; /* Membuat teks lebih tebal */
+        }
+        nav a:hover {
+            text-decoration: underline; /* Garis bawah saat hover */
+        }
+
+        /* Styling umum untuk body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; /* Menghilangkan margin default */
+            padding: 60px 0 20px; /* Menambahkan padding atas agar konten tidak tertutup navbar */
+            background-color: #f4f4f4; /* Warna latar belakang halaman */
+        }
+
+        footer {
+            margin-top: 20px; /* Jarak atas footer */
+            text-align: center; /* Memusatkan teks footer */
+        }
+    </style>
 </head>
 <body>
     <header>
-        
         <nav>
             <a href="/">Home</a>
             <a href="/about">About</a>
@@ -18,7 +52,7 @@
         <%- body %> <!-- Konten halaman yang dirender -->
     </main>
     <footer>
-        
+        <!-- Konten footer -->
     </footer>
 </body>
 </html>
