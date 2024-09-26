@@ -1,0 +1,45 @@
+/* Styling umum untuk body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4; /* Warna latar belakang halaman */
+}
+
+/* Styling untuk container kartu nama */
+.container {
+    background-color: white; /* Warna latar belakang kartu */
+    border-radius: 8px; /* Sudut melengkung */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Bayangan untuk efek kedalaman */
+    padding: 30px; /* Jarak di dalam kartu */
+    max-width: 400px; /* Lebar maksimum kartu */
+    min-height: 300px; /* Tinggi minimum kartu */
+    margin: 50px auto; /* Memusatkan kartu */
+    text-align: center; /* Teks rata tengah */
+    color: #333; /* Warna teks yang lebih lembut */
+}
+
+/* Styling untuk heading (nama) */
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333; /* Warna heading */
+}
+
+/* Styling untuk deskripsi singkat */
+p.description {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.6; /* Jarak antar baris teks */
+    color: #666; /* Warna teks yang lebih lembut */
+}
+
+/* Styling untuk foto */
+.photo {
+    width: 150px; /* Ukuran foto lebih proporsional */
+    height: 150px;
+    border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
+    margin-bottom: 20px; /* Ruang antara gambar dan teks */
+    object-fit: cover; /* Mengisi lingkaran tanpa distorsi */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Efek bayangan pada foto */
+}

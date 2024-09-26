@@ -1,0 +1,69 @@
+/* Styling umum untuk body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4; /* Warna latar belakang halaman */
+}
+
+/* Styling untuk container search bar dan tombol */
+.search-add-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Jarak bawah dari elemen lain */
+}
+
+/* Styling untuk search bar */
+#searchBar {
+    width: 300px; /* Atur lebar search bar agar tidak terlalu panjang */
+    padding: 12px 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border: 1px solid #ccc; /* Tambahkan border */
+    border-radius: 5px; /* Beri border radius agar terlihat lebih bagus */
+}
+
+/* Styling untuk tombol */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button#addContactButton {
+    background-color: #add8e6;
+    color: black;
+}
+
+/* Styling untuk tabel */
+.table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f8f8f8;
+}
+
+td.action-column {
+    width: 100px;
+    text-align: center;
+}

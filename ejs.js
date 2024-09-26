@@ -12,9 +12,14 @@ app.set("views", __dirname + "/views");
 app.use(ejsLayout);
 app.set("layout", "layout/layouts");
 
-
 // Menyajikan file statis (gambar)
 app.use(express.static("image"));
+
+// Set folder 'src' untuk file statis
+app.use(express.static("src"));
+
+// set folder cssEjs untuk file statis
+app.use(express.static("cssEjs"));
 
 // Middleware untuk logging
 app.use((req, res, next) => {
@@ -35,6 +40,7 @@ const readContacts = () => {
 const saveContacts = (contacts) => {
     fs.writeFileSync("./data/contacts.json", JSON.stringify(contacts, null, 2));
 };
+//
 
 // Rute untuk memperbarui kontak berdasarkan indeks
 app.post("/contacts/update/:index", (req, res) => {
