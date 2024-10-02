@@ -1,4 +1,5 @@
 
+
 <!-- CSS -->
 <link rel="stylesheet" href="/contactEjs.css">
 
@@ -10,17 +11,17 @@
     <main>
         <% if (message) { %>
             <h1><strong><%= message %></strong></h1>
-            <% } %>
-            <br>
-            <h1>Daftar Kontak</h1>
-           
-            <!-- Search bar untuk mencari kontak -->
-            <input type="text" id="searchBar" onkeyup="searchTable()" placeholder="Cari Berdasarkan Nama">
-           
-            <!-- button tambah kontak-->
-            <button id="addContactButton" onclick="showAddContactForm()">Tambah Kontak</button>
-           
-            <!-- Form untuk menambahkan kontak baru -->
+        <% } %>
+        <br>
+        <h1>Daftar Kontak</h1>
+
+        <!-- Search bar untuk mencari kontak -->
+        <input type="text" id="searchBar" onkeyup="searchTable()" placeholder="Cari Berdasarkan Nama">
+
+        <!-- Button tambah kontak -->
+        <button id="addContactButton" onclick="showAddContactForm()">Tambah Kontak</button>
+
+        <!-- Form untuk menambahkan kontak baru -->
         <div id="addContactForm" style="display:none; position:fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; border: 1px solid #ccc; padding: 20px; z-index: 1000;">
             <h2>Tambah Kontak</h2>
             <label>Nama:</label>
@@ -31,15 +32,13 @@
             <br>
             <label>Nomor:</label>
             <input type="text" id="newMobile" required>
-            <br>
-            <br>
+            <br><br>
             <button onclick="addContact()">Simpan</button>
             <button onclick="hideAddContactForm()">Batal</button>
         </div>
-        
 
         <!-- Overlay untuk gelap ketika form muncul -->
-        <div id="overlay"></div>
+        <div id="overlay" style="display:none;"></div>
 
         <!-- Form untuk melihat detail kontak -->
         <div id="detailContact" style="display:none; position:fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; border: 1px solid #ccc; padding: 20px; z-index: 1000;">
@@ -51,7 +50,6 @@
         </div>
 
         <% if (contacts.length > 0) { %>
-            
             <div class="table-container">
                 <table id="contactsTable">
                     <tr>
@@ -63,7 +61,7 @@
                             <td><%= contact.name %></td>
                             <td><%= contact.email %></td>
                             <td class="action-column">
-                                <button id="detailButton" onclick='showDetails("<%= contact.name %>", "<%= contact.email %>", "<%= contact.mobile %>", <%= index %>)'>Detail</button>
+                                <button id="detailButton" onclick='showDetails("<%= contact.name %>", "<%= contact.email %>", "<%= contact.mobile %>", <%= contact.id %>)'>Detail</button>
                             </td>
                         </tr>
                     <% }) %>
@@ -73,17 +71,8 @@
             <p>Tidak ada kontak yang tersedia.</p>
         <% } %>
     </main>
-    
-    <!-- Perhatikan file Path -->
-    <script src="/crudEjs.js"></script>
-
+     
+    <!-- perhatikan file path-->
+    <script src="/crudDB.js"></script>
     <!%- include('layout/footer') %>
 </body>
-
-
-
-
-
-
-
-
