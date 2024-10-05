@@ -13,7 +13,6 @@ const Comments = () => {
           <a className="avatar">
             <img src={commentData.photo} alt="Avatar" />
           </a>
-
           <div className="content">
             <a className="author">{commentData.name}</a>
             <div className="metadata">
