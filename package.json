@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@faker-js/faker": "^9.0.3",
+    "axios": "^1.7.7",
     "ejs": "^3.1.10",
     "express": "^4.21.0",
     "express-ejs-layouts": "^2.5.1",
