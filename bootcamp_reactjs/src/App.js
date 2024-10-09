@@ -6,11 +6,12 @@ import CommentsClass from "./CommentClass";
 import Jam from "./Jam";
 import InputData from "./Input";
 import ImageSearch from "./ApiUnsplash";
+import YouTubeLayout from "./APIYoutube";
 function App() {
   return ( 
    <div className="App">
     <Navbar/>
-    <ImageSearch/>
+    <YouTubeLayout/>
   
    </div> 
   );
