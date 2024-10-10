@@ -1,20 +1,24 @@
-import Comments from "./coba2";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Impor yang bener
+import Home from "./Home";
+import About from "./About";
+import Contact from "./Contact";
 import Navbar from "./Navbar";
-//import Data from './PROPS';
-import CommentsClass from "./CommentClass";
-//import Counting from "./State";
-import Jam from "./Jam";
-import InputData from "./Input";
-import ImageSearch from "./ApiUnsplash";
 import YouTubeLayout from "./APIYoutube";
+
 function App() {
-  return ( 
-   <div className="App">
-    <Navbar/>
-    <YouTubeLayout/>
-  
-   </div> 
+  return (
+    <Router> 
+      <Navbar /> 
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/youtube" element={<YouTubeLayout />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
+
+

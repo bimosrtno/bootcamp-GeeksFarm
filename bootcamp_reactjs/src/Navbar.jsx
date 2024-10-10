@@ -32,6 +32,7 @@ const Navbar = () => {
 <a href="/"  style={linkStyle}>home </a>
 <a href="/about" style={linkStyle}>about </a>
 <a href="/contact" style={linkStyle}>contact</a>  
+<a href="/youtube" style={linkStyle}>youtube</a>
 </nav> 
 <br></br><br></br>
 </div>    
